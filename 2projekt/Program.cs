@@ -1,4 +1,6 @@
-﻿internal class Program
+﻿using System.Threading.Tasks.Sources;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
@@ -8,7 +10,7 @@
         var liczbaDruga = Console.ReadLine();
 
         var czyUdaloSiePrzekonwertowac1NaLiczbe = int.TryParse(liczbaPierwsza, out int liczbaPierwszaPoKonwersji);
-        var czyUdaloSiePrzekonwertowac2NaLiczbe = int.TryParse(liczbaPierwsza, out int liczbaDrugaPoKonwersji);
+        var czyUdaloSiePrzekonwertowac2NaLiczbe = int.TryParse(liczbaDruga, out int liczbaDrugaPoKonwersji);
         if (czyUdaloSiePrzekonwertowac1NaLiczbe && czyUdaloSiePrzekonwertowac2NaLiczbe)
         {
             var wynik = Calculator.Add(liczbaPierwszaPoKonwersji, liczbaDrugaPoKonwersji);
