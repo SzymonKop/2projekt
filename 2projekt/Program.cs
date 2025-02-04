@@ -28,6 +28,16 @@ internal class Program
                     var wynik = Calculator.Minus(liczbaPierwszaPoKonwersji, liczbaDrugaPoKonwersji);
                     Console.WriteLine("wynik to:" + wynik);
                 }
+                else if (operacjaArytmetyczna == "*")
+                {
+                    var wynik = Calculator.Multiply(liczbaPierwszaPoKonwersji, liczbaDrugaPoKonwersji);
+                    Console.WriteLine("wynik to:" + wynik);
+                }
+                else if (operacjaArytmetyczna == "/")
+                { 
+                    var wynik = Calculator.Divide(liczbaPierwszaPoKonwersji, liczbaDrugaPoKonwersji);
+                Console.WriteLine("wynik to:" + wynik);
+                }
                 else
                 {
                     Console.WriteLine("error - operacja arytmetyczna nie obsługiwana");
@@ -43,7 +53,15 @@ internal class Program
 }
 
 public static class Calculator
+
 {
+    public static Int64 Multiply(Int64 x, Int64 y)
+        { return x * y; 
+    }
+    public static Int64 Divide(Int64 x, Int64 y)
+    {
+        return x / y;
+    }
     public static Int64 Minus(Int64 x, Int64 y)
     {
         return x - y;
