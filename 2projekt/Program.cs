@@ -9,45 +9,16 @@ internal class Program
         {
             try
             {
-                Console.WriteLine("\npodaj liczbe pierwsza:");
-                var liczbaPierwsza = Console.ReadLine();
-                Console.WriteLine("podaj operacje arytmetyczna");
-                var operacjaArytmetyczna = Console.ReadLine();
-                Console.WriteLine("podaj liczbe druga");
-                var liczbaDruga = Console.ReadLine();
-
-                var czyUdaloSiePrzekonwertowac1NaLiczbe = Int64.TryParse(liczbaPierwsza, out Int64 liczbaPierwszaPoKonwersji);
-                var czyUdaloSiePrzekonwertowac2NaLiczbe = Int64.TryParse(liczbaDruga, out Int64 liczbaDrugaPoKonwersji);
-                if (czyUdaloSiePrzekonwertowac1NaLiczbe && czyUdaloSiePrzekonwertowac2NaLiczbe)
+                Console.WriteLine("podaj piec liczb odzielonych przecinkami");
+                var piecLiczb = Console.ReadLine();
+                var lista = piecLiczb.Split(",").ToList();
+                var liczby = new List<int>();
+                foreach (var item in lista)
                 {
-                    Int64 wynik;
-                    switch (operacjaArytmetyczna)
-                    {
-                        case "+":
-                            wynik = Calculator.Add(liczbaPierwszaPoKonwersji, liczbaDrugaPoKonwersji);
-                            Console.WriteLine($"wynik to: {wynik}");
-                            break;
-                        case "-":
-                            wynik = Calculator.Minus(liczbaPierwszaPoKonwersji, liczbaDrugaPoKonwersji);
-                            Console.WriteLine("wynik to:" + wynik);
-                            break;
-                        case "*":
-                            wynik = Calculator.Multiply(liczbaPierwszaPoKonwersji, liczbaDrugaPoKonwersji);
-                            Console.WriteLine("wynik to:" + wynik);
-                            break;
-                        case "/":
-                            wynik = Calculator.Divide(liczbaPierwszaPoKonwersji, liczbaDrugaPoKonwersji);
-                            Console.WriteLine("wynik to:" + wynik);
-                            break;
-                        default:
-                            Console.WriteLine("error - operacja arytmetyczna nie obsługiwana");
-                            break;
-                    }
+                    int.TryParse(item, out var liczba);
+                    liczby.Add(liczba);
                 }
-                else
-                {
-                    Console.WriteLine("jeden z podanych argumentów nie był liczbą");
-                }
+                Console.WriteLine($"najwieksza liczba to: {liczby.Max()}");
             }
             catch (Exception ex)
             {
