@@ -9,16 +9,21 @@ internal class Program
         {
             try
             {
-                Console.WriteLine("podaj piec liczb odzielonych przecinkami");
-                var piecLiczb = Console.ReadLine();
-                var lista = piecLiczb.Split(",").ToList();
+                Console.WriteLine("podaj rownanie ktorego chcesz znac wynik:");
+                var input = Console.ReadLine();
+                var lista = input.Split("+").ToList();
                 var liczby = new List<int>();
                 foreach (var item in lista)
                 {
                     int.TryParse(item, out var liczba);
                     liczby.Add(liczba);
                 }
-                Console.WriteLine($"najwieksza liczba to: {liczby.Max()}");
+                var wynik = 0;
+                foreach (var item in liczby)
+                {
+                    wynik = wynik + item;
+                }
+                Console.WriteLine($"wynik to: {wynik}");
             }
             catch (Exception ex)
             {
