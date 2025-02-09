@@ -12,17 +12,38 @@ internal class Program
                 Console.WriteLine("podaj rownanie ktorego chcesz znac wynik:");
                 var input = Console.ReadLine();
                 var lista = input.Split("+").ToList();
-                var liczby = new List<int>();
+
+                var iloscLiczbDodatnich = lista.Count();
+                var liczby = new List<Int64>();
+
+                foreach (var item in lista.ToList())
+                {
+                   if (item.Length > 1)
+                    {
+                        lista.Remove(item);
+                        lista.AddRange(item.Split("-"));
+                    }
+                }
+                Int64 wynik = 0;
                 foreach (var item in lista)
                 {
-                    int.TryParse(item, out var liczba);
+                  Int64.TryParse(item, out var liczba);
                     liczby.Add(liczba);
                 }
-                var wynik = 0;
-                foreach (var item in liczby)
+
+                for (int i = 0; i < liczby.Count(); i++)
                 {
-                    wynik = wynik + item;
+
+                    if (i < iloscLiczbDodatnich)
+                    {
+                        wynik = Calculator.Add(wynik, liczby[i]);
+                    }
+                    else
+                    {
+                        wynik = Calculator.Minus(wynik, liczby[i]);
+                    }
                 }
+
                 Console.WriteLine($"wynik to: {wynik}");
             }
             catch (Exception ex)
